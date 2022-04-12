@@ -1,0 +1,26 @@
+<h1>Datos del la publicacion a editar.</h1>
+<form action="" method="post">
+  {% csrf_token %}
+
+  {% for element in form %}
+    <div class="">
+      <label for="">{{element.label}}</label>
+      <input type="{{element.field.widget.input_type}}" placeholder="{{element.label}}"
+      name="{{element.name}}" 
+      value="{{element.value | default:''}}"/>
+    </div>
+    {% if element.errors %}
+      <p>
+        {{element.errors}}
+      </p>
+    {% endif %}
+  {% endfor %}
+
+  <input type="submit" value="Actualizar información">
+  
+  <button class="back-button">
+    <a href="{% url 'spa:content' %}">
+      Cancelar
+    </a>
+  </button>
+</form>

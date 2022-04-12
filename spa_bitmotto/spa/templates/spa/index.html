@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--links-->
+
+  <!--title-->
+  <title>Index</title>
+</head>
+<body>
+  <header>
+    <h1>Ejercicio número 4, prueba técnica Bitmotto</h1>
+    <div>
+      <a href="{% url 'spa:create' %}">Crear publicación</a>
+    </div>
+  </header>
+  <main> 
+    
+    {% if content_list %}
+      <ul> 
+        {% for element in content_list %}
+         <li>
+          <h2>{{element.title}}</h2>
+            Me gusta {{element.positive_votes}} | No me gusta {{element.negative_votes}}
+            <br>
+            <a href="{% url 'spa:detail' element.id %}">Revisar</a>
+         </li>
+         <br>
+         <br>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No hay elementos para mostrar.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--links-->
+  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+  <link rel="stylesheet" href="{% static 'spa/detail.css' %}">
+  <!--title-->
+  <title>{{element.title}}</title>
+</head>
+<body>
+  <section>
+    <div class="content">
+      <h1>{{element.title}}</h1>
+      <span>Escrito por {{element.author}}</span>
+      <p>{{element.content}}</p>
+      <span class="date">
+        Publicado {{element.date}}
+      </span>
+      <div class="copntent-votes">
+        <div class="votes-positive">
+          Votos positivos {{element.positive_votes}}
+        </div>
+        <div class="votes-negative">
+          Votos negativos {{element.negative_votes}}
+        </div>
+      </div>
+      <div class="content-buttons">
+        <button>
+          <a href="{% url 'spa:edit' element.id %}">
+            Editar
+          </a>
+        </button>
+        <button>
+          <a href="{% url 'spa:deleted' element.id %}">
+            Eliminar
+          </a>
+        </button>
+      </div>
+      <a href="{% url 'spa:content' %}">Volver a inicio</a>
+    </div>
+  </section>
+</body>
+</html>
