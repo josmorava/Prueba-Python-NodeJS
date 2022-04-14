@@ -25,6 +25,6 @@ Ejercicio práctico Backend/frontend 🤩:
 
 -*Agregar en la barra de direcciones: __spa__*
 
-   *así http://127.0.0.1:8000/__spa__*
+   *así http://127.0.0.1:8000/spa*
   
 -Listo! 🤩 
