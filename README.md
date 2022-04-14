@@ -18,6 +18,7 @@ Ejercicio práctico Backend/frontend 🤩:
    *__/spa_bitmotto/__*
 
 -*Correr el los comandos:*
+
    *__python3 manage.py migrate__*
    
    *Esto creará las tablas de la base de datos*
