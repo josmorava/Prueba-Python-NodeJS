@@ -1,26 +1,53 @@
-<h1>Datos del la publicacion a editar.</h1>
-<form action="" method="post">
-  {% csrf_token %}
-
-  {% for element in form %}
-    <div class="">
-      <label for="">{{element.label}}</label>
-      <input type="{{element.field.widget.input_type}}" placeholder="{{element.label}}"
-      name="{{element.name}}" 
-      value="{{element.value | default:''}}"/>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--styles-->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+  <link rel="stylesheet" href="{% static 'spa/edits.css' %}">
+  <!--title-->
+  <title>Edit {{publication.title}}</title>
+</head>
+<body>
+  <section>
+    <div class="content">
+      <div class="content-title">
+        <h1 class="title">
+          Editar publicación
+        </h1>
+      </div>
+      <div class="content-form">
+        <form action="" method="post">
+          {% csrf_token %}
+      
+          {% for publication in form %}
+            <div class="form-inputs">
+              <label for="">{{publication.label}}</label>
+              <input 
+                type="{{publication.field.widget.input_type}}"   placeholder="{{publication.label}}"
+                name="{{publication.name}}" 
+                value="{{publication.value | default:''}}"/>
+            {% if publication.errors %}
+              <p>
+                {{publication.errors}}
+              </p>
+            {% endif %}
+            </div>
+          {% endfor %}
+      </div>
+       <div class="content-buttons">
+        <input class="input-button" type="submit" value="Actualizar información">
+        
+        <a class="back-button" href="{% url 'spa:content' %}">
+          Cancelar
+        </a>
+      </div>
+      </form>
     </div>
-    {% if element.errors %}
-      <p>
-        {{element.errors}}
-      </p>
-    {% endif %}
-  {% endfor %}
-
-  <input type="submit" value="Actualizar información">
-  
-  <button class="back-button">
-    <a href="{% url 'spa:content' %}">
-      Cancelar
-    </a>
-  </button>
-</form>
+  </section>
+</body>
+</html>

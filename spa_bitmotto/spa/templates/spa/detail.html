@@ -6,41 +6,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--links-->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="{% static 'spa/base.css' %}">
-  <link rel="stylesheet" href="{% static 'spa/detail.css' %}">
+  <link rel="stylesheet" href="{% static 'spa/details.css' %}">
   <!--title-->
-  <title>{{element.title}}</title>
-</head>
+  <title>{{publication.title}}</title>
+</head> 
 <body>
   <section>
     <div class="content">
-      <h1>{{element.title}}</h1>
-      <span>Escrito por {{element.author}}</span>
-      <p>{{element.content}}</p>
-      <span class="date">
-        Publicado {{element.date}}
-      </span>
-      <div class="copntent-votes">
-        <div class="votes-positive">
-          Votos positivos {{element.positive_votes}}
-        </div>
-        <div class="votes-negative">
-          Votos negativos {{element.negative_votes}}
-        </div>
+      <div class="content-title">
+        <h1 class="title">{{publication.title}}</h1>
+      <span class="author">Escrito por {{publication.author}}</span>
       </div>
+      <div class="content-text">
+        <p>{{publication.content}}</p>
+      </div>
+      <div class="content-date">
+        <span class="date">
+          Publicado {{publication.date}}
+        </span>
+      </div>
+
+     <div class="content-form">
+      <form class="content-votes" method="post">
+        {% csrf_token %}
+        <button 
+          class="like"
+          type="submit"
+          name="like">
+          <i class='bx bxs-like'></i> {{publication.positive_votes}}
+        </button>
+        <button 
+          class="dislike"
+          type="submit" 
+          name="dislike">
+          <i class='bx bxs-dislike' ></i> {{publication.negative_votes}}
+        </button>
+      </form>
+     </div>
+
       <div class="content-buttons">
-        <button>
-          <a href="{% url 'spa:edit' element.id %}">
-            Editar
-          </a>
-        </button>
-        <button>
-          <a href="{% url 'spa:deleted' element.id %}">
-            Eliminar
-          </a>
-        </button>
+        <a class="edit" href="{% url 'spa:edit' publication.id %}">
+          Editar
+        </a>
+        <a class="delete" href="{% url 'spa:deleted' publication.id %}">
+          Eliminar
+        </a>
       </div>
-      <a href="{% url 'spa:content' %}">Volver a inicio</a>
+      <div class="content-exit">
+        <a class="back-button" href="{% url 'spa:content' %}">Volver a inicio</a>
+      </div>
     </div>
   </section>
 </body>

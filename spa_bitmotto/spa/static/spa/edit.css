@@ -1,0 +1,91 @@
+body{
+  background-color: #bdc3C7;
+}
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.content{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #2C3E50;
+  border-radius: 10px;
+  width: 600px;
+  padding: 30px;
+}
+.content-title h1{
+  font-size: 33px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0;
+  color: white;
+  padding: 10px 0px 15px 0px;
+}
+.content-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.content-form .form-inputs{
+  padding: 10px;
+}
+.form-inputs label{
+  color: gray ;
+  letter-spacing: 2px;
+  font-size: 16px;
+  display: inline-block;
+}
+.form-inputs input{
+  width: 100%;
+  font-size: 13px;
+  border-radius: 5px;
+  height: 30px;
+}
+.form-inputs input[type=text]:focus {
+  border: 2px solid white;
+}
+.content-buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+.content-buttons .input-button{
+  padding: 15px 20px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+}
+.content-buttons .input-button:hover{
+  background-color: #27ae60;
+}
+.content-buttons .back-button{
+  padding: 15px 20px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #e74c3c;
+}
+.content-buttons .back-button:hover{
+  background-color: #c0392b;
+}
+/*errors*/
+ul.errorlist{
+  list-style: none;
+}
+ul.errorlist li{
+  color: #e74c3c;
+  letter-spacing: 2px;
+  font-weight: 600;
+}

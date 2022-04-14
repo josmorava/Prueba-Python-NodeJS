@@ -7,8 +7,8 @@ class Content(models.Model):
   """
   Modelo de la app principal del contenido a mostrar en el spa 
   """
-  title = models.CharField(max_length=50)
-  content = models.TextField(max_length=500)
+  title = models.CharField(max_length=100)
+  content = models.TextField(max_length=1000)
   author=models.CharField(max_length=30)
   date = models.DateField(auto_now_add=True)
   positive_votes=models.IntegerField(default=0)

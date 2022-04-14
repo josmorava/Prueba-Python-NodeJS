@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,35 +6,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--links-->
-
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+  <link rel="stylesheet" href="{% static 'spa/view.css' %}">
   <!--title-->
-  <title>Index</title>
-</head>
-<body>
+  <title>Publicaciones</title>
+</head> 
+<body> 
   <header>
-    <h1>Ejercicio número 4, prueba técnica Bitmotto</h1>
-    <div>
-      <a href="{% url 'spa:create' %}">Crear publicación</a>
+    <div class="header-title">
+      <h1>Prueba técnica <span>Bitmotto</span>
+      </h1>
+      <span class="minimal-text">
+        SINGLE PAGE APLICATION
+      </span>
+    </div>
+    
+    <div class="header-button">
+      <a href="{% url 'spa:create' %}">
+        <i class='bx bx-plus-medical'></i>
+        Añadir publicación</a>
     </div>
   </header>
   <main> 
-    
-    {% if content_list %}
+    {% if publication_list %}
       <ul> 
-        {% for element in content_list %}
+        {% for publication in publication_list %}
          <li>
-          <h2>{{element.title}}</h2>
-            Me gusta {{element.positive_votes}} | No me gusta {{element.negative_votes}}
-            <br>
-            <a href="{% url 'spa:detail' element.id %}">Revisar</a>
+          <div class="content">
+             <div class="content-title">
+              <i class='bx bx-chevron-right'></i><h2 class="content_title">{{publication.title}}</h2>
+             </div>
+            <p>Por {{publication.author}}</p>
+            <div class="content-votes">
+              <p class="positive-votes">
+                <i class='bx bxs-like '></i>
+                {{publication.positive_votes}} 
+              </p>| 
+              <p class="negative-votes">
+                <i class='bx bxs-dislike'></i>
+                {{publication.negative_votes}}
+              </p>
+            </div>
+            <a href="{% url 'spa:detail' publication.id %}">Ver</a>
+          </div>
          </li>
-         <br>
-         <br>
         {% endfor %}
       </ul>
     {% else %}
       <p>No hay elementos para mostrar.</p>
     {% endif %}
   </main>
+
 </body>
 </html>
