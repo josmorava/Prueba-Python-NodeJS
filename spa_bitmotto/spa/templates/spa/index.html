@@ -1,18 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--links-->
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+{% extends 'spa/base.html' %}
+
+{% block styles %}
+  {% load static %}
   <link rel="stylesheet" href="{% static 'spa/view.css' %}">
-  <!--title-->
-  <title>Publicaciones</title>
-</head> 
-<body> 
+{% endblock styles %}
+
+{% block title %}Publicaciones{% endblock title %}
+
+{% block content %}
   <header>
     <div class="header-title">
       <h1>Prueba técnica <span>Bitmotto</span>
@@ -32,11 +27,11 @@
     {% if publication_list %}
       <ul> 
         {% for publication in publication_list %}
-         <li>
+        <li>
           <div class="content">
-             <div class="content-title">
+            <div class="content-title">
               <i class='bx bx-chevron-right'></i><h2 class="content_title">{{publication.title}}</h2>
-             </div>
+            </div>
             <p>Por {{publication.author}}</p>
             <div class="content-votes">
               <p class="positive-votes">
@@ -50,13 +45,11 @@
             </div>
             <a href="{% url 'spa:detail' publication.id %}">Ver</a>
           </div>
-         </li>
+        </li>
         {% endfor %}
       </ul>
     {% else %}
       <p>No hay elementos para mostrar.</p>
     {% endif %}
   </main>
-
-</body>
-</html>
+{% endblock content %}

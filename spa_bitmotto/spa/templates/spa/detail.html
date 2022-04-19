@@ -1,18 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--links-->
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+{% extends 'spa/base.html' %}
+
+{% block styles %}
+  {% load static %}
   <link rel="stylesheet" href="{% static 'spa/details.css' %}">
-  <!--title-->
-  <title>{{publication.title}}</title>
-</head> 
-<body>
+{% endblock styles %}
+
+{% block title %}{{publication.title}}{% endblock title %}
+
+{% block content %}
   <section>
     <div class="content">
       <div class="content-title">
@@ -27,8 +22,7 @@
           Publicado {{publication.date}}
         </span>
       </div>
-
-     <div class="content-form">
+    <div class="content-form">
       <form class="content-votes" method="post">
         {% csrf_token %}
         <button 
@@ -44,8 +38,7 @@
           <i class='bx bxs-dislike' ></i> {{publication.negative_votes}}
         </button>
       </form>
-     </div>
-
+    </div>
       <div class="content-buttons">
         <a class="edit" href="{% url 'spa:edit' publication.id %}">
           Editar
@@ -59,5 +52,5 @@
       </div>
     </div>
   </section>
-</body>
-</html>
+{% endblock content %}
+

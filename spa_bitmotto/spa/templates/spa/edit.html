@@ -1,18 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--styles-->
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="{% static 'spa/base.css' %}">
+{% extends 'spa/base.html' %}
+
+{% block styles %}
+  {% load static %}
   <link rel="stylesheet" href="{% static 'spa/edit.css' %}">
-  <!--title-->
-  <title>Edit {{publication.title}}</title>
-</head>
-<body>
+{% endblock styles %}
+
+{% block title %}
+  Edit {{publication.title}}
+{% endblock title %}
+
+{% block content %}
   <section>
     <div class="content">
       <div class="content-title">
@@ -39,7 +36,7 @@
             </div>
           {% endfor %}
       </div>
-       <div class="content-buttons">
+      <div class="content-buttons">
         <input class="input-button" type="submit" value="Actualizar información">
         
         <a class="back-button" href="{% url 'spa:content' %}">
@@ -49,5 +46,4 @@
       </form>
     </div>
   </section>
-</body>
-</html>
+{% endblock content %}
