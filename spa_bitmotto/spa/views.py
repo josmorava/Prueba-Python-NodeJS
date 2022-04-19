@@ -5,22 +5,6 @@ from .forms import ContentForm, LikesForm
 
 from .models import Content
 
-
-#Vistas genericas
-#class IndexView(generic.ListView):
-  #"""
-   # -Mostrar publicaciones
-   #-Ordenar publicaciones por votos
-  #"""
-  #pass
-
-#class DetailView(generic.DetailView):
-  #"""
-    #-Detalle de la pubvlicacion
-    #-sistema de votacion
-  #"""
-  #pass
-
 def content(request):
   """Mostrar todos los elementos ordenados por mayores votos positivos"""
   publication_list = Content.objects.order_by('-positive_votes')
